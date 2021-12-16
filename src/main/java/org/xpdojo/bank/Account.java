@@ -13,5 +13,7 @@ public class Account {
     }
 
     public void transfer(Account account2, int amount) {
+        this.withdrawAmount(amount);
+        account2.depositAmount(amount);
     }
 }
