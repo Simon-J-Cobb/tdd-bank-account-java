@@ -21,4 +21,13 @@ public class AccountTest {
         account.withdrawAmount(10);
         assertThat(account.balance).isEqualTo(-10);
     }
+
+    @Test
+    public void transferAnAmountToAnotherAccount(){
+        Account account1 = new Account();
+        Account account2 = new Account();
+        account1.transfer(account2, 10);
+        assertThat(account1.balance).isEqualTo(-10);
+        assertThat(account2.balance).isEqualTo(10);
+    }
 }

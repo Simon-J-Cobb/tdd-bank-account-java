@@ -11,4 +11,7 @@ public class Account {
 
     public void depositAmount(int amount) { balance += amount;
     }
+
+    public void transfer(Account account2, int amount) {
+    }
 }
