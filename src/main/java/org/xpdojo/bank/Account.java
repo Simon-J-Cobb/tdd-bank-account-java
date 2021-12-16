@@ -1,19 +1,30 @@
 package org.xpdojo.bank;
 
 public class Account {
-    public int balance;
+    private Money balance;
 
-
-
-    public void withdrawAmount(int amount){
-        balance -= amount;
+    Account(){
+        this.balance = new Money();
     }
 
-    public void depositAmount(int amount) { balance += amount;
+    Account(int balance){
+        this.balance = new Money(balance);
     }
 
-    public void transfer(Account account2, int amount) {
-        this.withdrawAmount(amount);
-        account2.depositAmount(amount);
+    public Money getBalance() {
+        return balance;
+    }
+
+    public void withdrawAmount(Money otherMoney){
+        balance = balance.spendMoney(otherMoney);
+    }
+
+    public void depositAmount(Money otherMoney) {
+        balance = balance.makeMoney(otherMoney);
+    }
+
+    public void transfer(Account account2, Money otherMoney) {
+        this.withdrawAmount(otherMoney);
+        account2.depositAmount(otherMoney);
     }
 }
